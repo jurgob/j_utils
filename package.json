@@ -1,0 +1,21 @@
+{
+  "name": "j_bin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "j_querystring2obj.js",
+  "bin": {
+    "j_ngrep_filter":"j_ngrep_filter.js",
+    "j_querystring2obj":"j_querystring2obj.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "json-beautify": "^1.0.1",
+    "minimist": "^1.2.0",
+    "prettyjson": "^1.2.1"
+  }
+}
