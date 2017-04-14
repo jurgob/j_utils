@@ -51,9 +51,9 @@ function beautifyJson(item) {
   }
 }
 
-function orOptionsFilter(el){
-  if(orOptions && orOptions.length){
-    return orOptions
+function andOptionsFilter(el){
+  if(andOptions && andOptions.length){
+    return andOptions
       .map(function(opt) { return !!el.match(opt)  })
       .reduce(function(el, prev){return el && prev }, true )
   }else {
@@ -63,7 +63,7 @@ function orOptionsFilter(el){
 
 }
 
-function andOptionsFilter(el){
+function orOptionsFilter(el){
   if(orOptions && orOptions.length){
     return orOptions
       .map(function(opt){ return !!el.match(opt)})
