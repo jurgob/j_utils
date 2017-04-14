@@ -1,15 +1,15 @@
 {
   "name": "j_utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
-  "repository" :{
-    "type" : "git",
-    "url" : "https://github.com/jurgob/j_utils.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jurgob/j_utils.git"
   },
   "main": "j_querystring2obj.js",
   "bin": {
-    "j_ngrep_filter":"j_ngrep_filter.js",
-    "j_querystring2obj":"j_querystring2obj.js"
+    "j_ngrep_filter": "j_ngrep_filter.js",
+    "j_querystring2obj": "j_querystring2obj.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
