@@ -1,6 +1,6 @@
 {
   "name": "j_utils",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
   "bin": {
     "j_ngrep_filter": "j_ngrep_filter.js",
     "j_querystring2obj": "j_querystring2obj.js",
-    "j_syslog_2_json":"j_syslog_2_json.js"
+    "j_syslog_2_json": "j_syslog_2_json.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
