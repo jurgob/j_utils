@@ -1,8 +1,17 @@
 #!/usr/bin/env node
-// var args = process.argv.slice(2)
 var argv = require('minimist')(process.argv.slice(2));
-var colors = require('colors');
+var readline = require('readline');
+var beautify = require("json-beautify");
+var fileName = argv['_'][0]
+var inputStream;
+if(typeof fileName === 'string'){
+  inputStream = require('fs')
+    .createReadStream(fileName)
+} else {
+  inputStream = process.stdin
+}
 
+var colors = require('colors');
 colors.setTheme({
   silly: 'grey',
   input: 'white',
@@ -15,10 +24,6 @@ colors.setTheme({
   error: 'red'
 });
 
-var fs = require('fs');
-var beautify = require("json-beautify");
-var fileName = argv['_'][0]
-console.log(argv)
 var orOptions = argv['o']
 if(orOptions && typeof orOptions === 'string' )
   orOptions = [orOptions]
@@ -28,13 +33,8 @@ if(andOptions && typeof andOptions === 'string' )
   andOptions = [andOptions]
 
 
-var file = fs.readFileSync(fileName).toString()
 
-function removeDuplicateFilter(item, pos, self) {
-  return self.indexOf(item) == pos;
-}
-
-function beautifyJson(item) {
+function printBlock(item) {
 
   var splitted = item.split('\n.\n')
   var header = splitted[0]
@@ -59,8 +59,6 @@ function andOptionsFilter(el){
   }else {
     return true
   }
-
-
 }
 
 function orOptionsFilter(el){
@@ -74,11 +72,25 @@ function orOptionsFilter(el){
 
 }
 
-var res = file
-  .split('\n\n')
-  .filter(removeDuplicateFilter)
+var rl = readline.createInterface({
+  input: inputStream,
+  // output: process.stdout
+});
 
+var alreadyPrintedBlocks = [];
+var curBlock;
+var lastLine;
+rl.on('line', function (line) {
+  if(!line && !lastLine.index){
+    // console.log('\n ########### \n')
+    if(alreadyPrintedBlocks.indexOf(curBlock)  === -1 ){
+      alreadyPrintedBlocks.push(curBlock)
+      printBlock(curBlock)
+    }
+    curBlock = ""
+  } else {
+    curBlock += '\n'+line
+  }
 
-res
-  .forEach(beautifyJson)
-
+  lastLine = line
+});
