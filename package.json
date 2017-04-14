@@ -1,7 +1,11 @@
 {
-  "name": "j_bin",
-  "version": "1.0.0",
+  "name": "j_utils",
+  "version": "0.0.2",
   "description": "",
+  "repository" :{
+    "type" : "git",
+    "url" : "https://github.com/jurgob/j_utils.git"
+  },
   "main": "j_querystring2obj.js",
   "bin": {
     "j_ngrep_filter":"j_ngrep_filter.js",
