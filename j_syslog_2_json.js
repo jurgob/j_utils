@@ -35,14 +35,16 @@ if(andOptions && typeof andOptions === 'string' )
 
 
 function printBlock(item) {
-
   var isMatch = orOptionsFilter(item) && andOptionsFilter(item)
   var print_color = isMatch ? 'prompt' : 'silly'
-  var log = item.slice(0,item.indexOf('{') - 1)
-  var item = item.slice(item.indexOf('{'))
-  var toPrint =beautify(JSON.parse(item),null, 3, 100 )
-  console.log( toPrint[print_color]  )
-
+  try{
+    var log = item.slice(0,item.indexOf('{') - 1)
+    var item = item.slice(item.indexOf('{'))
+    var toPrint =beautify(JSON.parse(item),null, 3, 100 )
+    console.log( toPrint[print_color]  )
+  }catch(e){
+    console.log( item[print_color] )
+  }
   // if(body && body[0] === '{'){
   //   console.log(beautify(JSON.parse(body),null, 2, 100)[print_color])
   // } else {
